@@ -1,5 +1,7 @@
 package com.enseirb.joinme;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.hcherif.enseirb.com.joinmeapplication.R;
@@ -53,21 +55,37 @@ public class PhoneNumberSms extends AppCompatActivity {
 
 
     public void sendGpsData(View v){
+        if(chaine.length()>0) {
+            sendSms(new String(chaine), "Invitation Request:" + ServiceGPS.getCords(), getApplicationContext());
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"phone number is required",Toast.LENGTH_LONG).show();
+        }
+    }
 
-        sendSms(new String(chaine),ServiceGPS.getCords());
+    public void changeMapLocation(View v){
+        Intent intent=new Intent(getApplicationContext(),ChooseMapLocation.class);
+        if(chaine.length()>0) {
+            intent.putExtra("SenderNum", new String(chaine));
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"phone number is required",Toast.LENGTH_LONG).show();
+        }
+
     }
 
 
- private void sendSms(String phoneNumber,String msg){
+ public static  void sendSms(String phoneNumber,String msg, Context context){
 
      try {
          SmsManager smsManager = SmsManager.getDefault();
          smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
-         Toast.makeText(this.getApplicationContext(), "SMS Sent!",Toast.LENGTH_LONG).show();
+         Toast.makeText(context, "SMS Sent!",Toast.LENGTH_SHORT).show();
      } catch (Exception e) {
 
         // Toast.makeText(this.getApplicationContext(), "SMS failed!",Toast.LENGTH_SHORT).show();
-         Toast.makeText(this.getApplicationContext(), "SMS SENT FAILED"+e.getMessage(),Toast.LENGTH_SHORT).show();
+         Toast.makeText(context, "SMS SENT FAILED"+e.getMessage(),Toast.LENGTH_SHORT).show();
          e.printStackTrace();
      }
 

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 public class SmsReceiver extends BroadcastReceiver {
 
     final SmsManager sms = SmsManager.getDefault();
- //   private Activity activity=new Activity();
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -41,13 +42,20 @@ public class SmsReceiver extends BroadcastReceiver {
 
                     Log.i("SmsReceiver", "senderNum: "+ senderNum + "; message: " + message);
 
+                    if(message.matches(".*:\\-?[0-9]+\\.[0-9]+,\\-?[0-9]+\\.[0-9]+")) {
+                        if (message.contains("Request")) {
+                            Intent intentResponse = new Intent(context, ArrangmentResponse.class);
+                            intentResponse.putExtra("senderNum", senderNum);
+                            intentResponse.putExtra("senderMsg", message);
+                            context.startActivity(intentResponse);
+                        }
 
-                    // Show Alert
-                    int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(context,
-                            "senderNum: "+ senderNum + ", message: " + message, duration);
-                    toast.show();
-                 //   activity.startActivity();
+                    }
+                    else if(message.contains("Invitation Response")){
+                        Toast.makeText(context,
+                                "senderNum: " + senderNum + ", Response msg: " + message,Toast.LENGTH_LONG).show();
+
+                    }
 
                 }
             }

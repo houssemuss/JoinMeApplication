@@ -163,13 +163,22 @@
 
 
             <Button
-                android:layout_width="317dp"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="sendGpsData"
-                android:text="Envoyer SMS"
+                android:text="Send Invitation"
 
 
                 />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="changeMapLocation"
+                android:text="Change Location"
+
+
+                />
+
 
 
 
