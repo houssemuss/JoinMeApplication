@@ -1,6 +1,7 @@
 package com.enseirb.joinme;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCallback {
@@ -83,10 +85,13 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
                 LatLng newLocation = marker.getPosition();
              //   mLocation.setLatitude(newLocation.latitude);
               //  mLocation.setLongitude(newLocation.longitude);
+
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 13));
-                Toast.makeText(getApplicationContext(),newLocation.latitude+"",Toast.LENGTH_SHORT).show();
-                gcords.replace(0,gcords.length(),"");
-                gcords.append(newLocation.latitude+","+newLocation.longitude);
+                if(newLocation!=null) {
+                  //  Toast.makeText(getApplicationContext(), newLocation.latitude + "", Toast.LENGTH_SHORT).show();
+                    gcords.replace(0, gcords.length(), "");
+                    gcords.append(newLocation.latitude + "," + newLocation.longitude);
+                }
                 mMap.getMapAsync(current);
                 onMapReady(mMap.getMap());
 
@@ -103,7 +108,21 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
 
 
     public void sendInvitation(View v) {
-        PhoneNumberSms.sendSms(getIntent().getStringExtra("SenderNum"),"Invitation Request:"+gcords,getApplicationContext());
+        Intent intent=getIntent();
+        List<Contact> contacts=intent.getParcelableArrayListExtra("listContacts");
+        if(!new String(gcords).matches(".*Error.*")&&gcords.length()>0) {
+            if (contacts != null && contacts.size() != 0) {
+                for (Contact contact : contacts) {
+                    PhoneNumberSms.sendSms(contact.getPhone_number(), "Invitation Request:" + gcords, getApplicationContext());
+                }
+                intent.removeExtra("listContacts");
+            }
+
+            else {
+                PhoneNumberSms.sendSms(getIntent().getStringExtra("SenderNum"), "Invitation Request:" + gcords, getApplicationContext());
+            }
+        }
+
     }
 
 }

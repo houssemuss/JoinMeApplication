@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 String[] permissions = {Manifest.permission.SEND_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_SMS,
                         Manifest.permission.READ_PHONE_STATE,Manifest.permission.READ_PHONE_NUMBERS,
                         Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+                         Manifest.permission.READ_CONTACTS
                 };
                 requestPermissions(permissions, PERMISSION_REQUEST_CODE);
         }

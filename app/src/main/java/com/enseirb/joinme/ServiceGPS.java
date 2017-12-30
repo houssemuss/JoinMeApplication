@@ -83,9 +83,9 @@ public class ServiceGPS extends Service   implements LocationListener {
                 Toast.makeText(applicationContext, "gps non executed return", Toast.LENGTH_SHORT).show();
             }
             if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, servicegps);
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, servicegps);
             } else {
-                lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, servicegps);
+                lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 10, servicegps);
 
             }
             if (lm != null) {
@@ -95,10 +95,10 @@ public class ServiceGPS extends Service   implements LocationListener {
 
                 return latitude + "," + longitude;
             }
-            else return ("cordonnées non trouvées");
+            else return ("Error");
         }
         catch(Exception e){
-            Toast.makeText(applicationContext, "Error:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+       //     Toast.makeText(applicationContext, "Error: no cords found "+e.getMessage(), Toast.LENGTH_SHORT).show();
             return "Error";
         }
     }

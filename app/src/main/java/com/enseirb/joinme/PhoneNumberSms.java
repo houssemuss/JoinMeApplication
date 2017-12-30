@@ -55,8 +55,16 @@ public class PhoneNumberSms extends AppCompatActivity {
 
 
     public void sendGpsData(View v){
-        if(chaine.length()>0) {
-            sendSms(new String(chaine), "Invitation Request:" + ServiceGPS.getCords(), getApplicationContext());
+        String cords=ServiceGPS.getCords();
+       // Toast.makeText(getApplicationContext(), cords,Toast.LENGTH_SHORT).show();
+
+        if(chaine.length()>0 ) {
+            if(!cords.matches(".*Error.*")) {
+                sendSms(new String(chaine), "Invitation Request:" + cords, getApplicationContext());
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"NO GPS CORDS FOUND",Toast.LENGTH_SHORT).show();
+            }
         }
         else{
             Toast.makeText(getApplicationContext(),"phone number is required",Toast.LENGTH_LONG).show();

@@ -28,11 +28,14 @@ public class choice_window extends AppCompatActivity {
         if(choices.getCheckedItemPosition()==0){
             intent=new Intent(getApplicationContext(),PhoneNumberSms.class);
 
+
         }
-        else {
-            Toast.makeText(getApplicationContext(),"list of contact",Toast.LENGTH_LONG).show();
+        else  if(choices.getCheckedItemPosition()==1){
+           // Toast.makeText(getApplicationContext(),"list of contact",Toast.LENGTH_LONG).show();
+            intent=new Intent(getApplicationContext(),PhoneNumberList.class);
         }
 
         startActivity(intent);
+
     }
 }
