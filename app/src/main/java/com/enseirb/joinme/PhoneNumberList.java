@@ -22,17 +22,25 @@ public class PhoneNumberList extends AppCompatActivity {
 
     ListView listview ;
     List<Contact> contacts= new ArrayList<Contact>();
-    SparseBooleanArray sparseBooleanArray ;
     List<Contact> selectedContacts;
     CustomListItem adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone_number_list);
         contacts=getAllContacts();
-        listview = (ListView)findViewById(R.id.listContact);
-        adapter= new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts );
-        listview.setAdapter( new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts ) );
+        if(contacts.size()!=0) {
+            setContentView(R.layout.activity_phone_number_list);
+            listview = (ListView) findViewById(R.id.listContact);
+            adapter = new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts);
+            listview.setAdapter(new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts));
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"NO CONTACT FOUND",Toast.LENGTH_SHORT).show();
+            Intent intentChoice=new Intent(getApplicationContext(),choice_window.class);
+            startActivity(intentChoice);
+            finish();
+        }
 
     }
 
