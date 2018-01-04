@@ -87,6 +87,9 @@ public class PhoneNumberList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ChooseMapLocation.class);
                 intent.putParcelableArrayListExtra("listContacts", myselectedContacts);
                 startActivity(intent);
+                selectedContacts.clear();
+
+
             }
             else {
                 Toast.makeText(getApplicationContext(),"Contact selection is required",Toast.LENGTH_SHORT).show();

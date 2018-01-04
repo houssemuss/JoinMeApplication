@@ -22,10 +22,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-
         final Bundle bundle = intent.getExtras();
-
         try {
 
             if (bundle != null) {
@@ -36,7 +33,6 @@ public class SmsReceiver extends BroadcastReceiver {
 
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
                     String phoneNumber = currentMessage.getDisplayOriginatingAddress();
-
                     String senderNum = phoneNumber;
                     String message = currentMessage.getDisplayMessageBody();
 
@@ -45,23 +41,24 @@ public class SmsReceiver extends BroadcastReceiver {
                     if(message.matches(".*:\\-?[0-9]+\\.[0-9]+,\\-?[0-9]+\\.[0-9]+")) {
                         if (message.contains("Request")) {
                             Intent intentResponse = new Intent(context, ArrangmentResponse.class);
+                            intentResponse.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                             intentResponse.putExtra("senderNum", senderNum);
                             intentResponse.putExtra("senderMsg", message);
                             context.startActivity(intentResponse);
-                        }
 
+                        }
                     }
                     else if(message.contains("Invitation Response")){
                         Toast.makeText(context,
                                 "senderNum: " + senderNum + ", Response msg: " + message,Toast.LENGTH_LONG).show();
 
                     }
-
                 }
             }
 
         } catch (Exception e) {
             Log.e("SmsReceiver", "Exception smsReceiver" +e);
+            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
 
         }
     }
