@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:padding="20dip"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
         <LinearLayout
@@ -39,24 +39,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="1" />
+                android:text="1"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="2" />
+                android:text="2"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
                 android:text="3"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button" />
 
-                />
 
 
         </LinearLayout>
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,21 +82,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="4" />
+                android:text="4" android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="5" />
+                android:text="5"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
 
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="6" />
+                android:text="6"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,24 +124,40 @@
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
                 android:text="7"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"
 
                 />
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="8" />
+                android:text="8"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
                 android:id="@+id/btn9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
-                android:text="9" />
+                android:text="9"
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"/>
 
 
         </LinearLayout>
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,21 +170,27 @@
                 android:layout_height="wrap_content"
                 android:onClick="setPhoneNumber"
                 android:text="0"
-
+                android:textStyle="bold"
+                android:background="@drawable/calculatrice_button"
 
                 />
-
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_orange_light"
+                android:background="@color/MyYellow"
                 android:onClick="setPhoneNumber"
                 android:text="+"
                 android:textSize="18sp" />
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_red_dark"
+                android:background="@color/MyRed"
                 android:onClick="setPhoneNumber"
 
                 android:text="c" />
@@ -148,11 +199,11 @@
         </LinearLayout>
 
 
-        <View
-            android:id="@+id/SplitLine_hor1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@android:color/darker_gray" />
+
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="40dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,23 +212,26 @@
             android:orientation="horizontal">
 
 
-
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
                 android:onClick="sendGpsData"
                 android:text="Send Invitation"
-
+                android:textStyle="bold"
 
                 />
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
+
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
                 android:onClick="changeMapLocation"
                 android:text="Change Location"
-
-
-                />
+                android:textStyle="bold" />
 
 
 

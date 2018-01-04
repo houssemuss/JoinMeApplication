@@ -3,4 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="button_pressed">#b0aeae</color>
+    <color name="button_focused">#b0aeae</color>
+    <color name="button_default">#82a8d2</color>
+    <color name="calcul_default">#516ab0</color>
+    <color name="MyRed">#eea098</color>
+    <color name="MyYellow">#eccc90</color>
+    <color name="MyGreen">#08db72</color>
+
+
+
+
+
+
+
+
+
 </resources>

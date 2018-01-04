@@ -27,31 +27,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_width="313dp"
+        android:layout_height="126dp"
         android:gravity="center"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="205dp">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
-            android:text="Accept"
+            android:background="@color/MyGreen"
+            android:gravity="center"
             android:onClick="accept"
-            android:gravity="center_horizontal"
-            />
+            android:textStyle="bold"
+            android:text="Accept" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="100dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_red_dark"
-            android:text="dismiss"
+            android:background="@color/MyRed"
+            android:gravity="center"
+            android:textStyle="bold"
             android:onClick="dismiss"
-            android:gravity="center_horizontal"
-            />
-
+            android:text="dismiss" />
 
 
     </LinearLayout>
