@@ -3,14 +3,19 @@ package com.enseirb.joinme;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.hcherif.enseirb.com.joinmeapplication.R;
 import android.util.SparseBooleanArray;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,8 +37,17 @@ public class PhoneNumberList extends AppCompatActivity {
         if(contacts.size()!=0) {
             setContentView(R.layout.activity_phone_number_list);
             listview = (ListView) findViewById(R.id.listContact);
+            ViewGroup.LayoutParams params = listview.getLayoutParams();
+            WindowManager wm = (WindowManager) this.getSystemService(this.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int height = size.y;
+            params.height = height-height/5;
+            listview.setLayoutParams(params);
             adapter = new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts);
             listview.setAdapter(new CustomListItem(getApplicationContext(), R.layout.customlisteitem, contacts));
+
         }
         else {
             Toast.makeText(getApplicationContext(),"NO CONTACT FOUND",Toast.LENGTH_SHORT).show();

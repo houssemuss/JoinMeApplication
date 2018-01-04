@@ -7,10 +7,13 @@ import android.hcherif.enseirb.com.joinmeapplication.R;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                String[] permissions = {Manifest.permission.SEND_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_SMS,
-                        Manifest.permission.READ_PHONE_STATE,Manifest.permission.READ_PHONE_NUMBERS,
-                        Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
-                         Manifest.permission.READ_CONTACTS
-                };
+            String[] permissions = {Manifest.permission.SEND_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_SMS,
+                    Manifest.permission.READ_PHONE_STATE,Manifest.permission.READ_PHONE_NUMBERS,
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.READ_CONTACTS
+            };
                 requestPermissions(permissions, PERMISSION_REQUEST_CODE);
         }
 
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         };
-        new Timer().schedule(timerTask, 3000);
+        new Timer().schedule(timerTask, 5000);
     }
+
+
 }

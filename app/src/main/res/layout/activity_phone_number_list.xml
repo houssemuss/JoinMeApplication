@@ -7,35 +7,41 @@
     tools:context="com.enseirb.joinme.PhoneNumberList">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-            <ListView
-                android:layout_width="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <ListView
+            android:id="@+id/listContact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:choiceMode="multipleChoice" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+         >
+
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listContact"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:choiceMode="multipleChoice" />
+                android:onClick="broadcastInvitation"
+                android:text="Send Invitation" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="changePlaceBroadcast"
+                android:text="Change Location" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="broadcastInvitation"
-                        android:text="Send Invitation" />
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="changePlaceBroadcast"
-                        android:text="Change Location" />
-
-            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
