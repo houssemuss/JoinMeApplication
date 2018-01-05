@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.hcherif.enseirb.com.joinmeapplication.R;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -52,7 +53,6 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
 
 
         map.setMyLocationEnabled(true);
-     // final   Location mLocation = map.getMyLocation();
         String cords=ServiceGPS.getCords();
         StringTokenizer st=new StringTokenizer(cords,",");
         double latitude=0;
@@ -94,8 +94,8 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
                 }
                 mMap.getMapAsync(current);
                 onMapReady(mMap.getMap());
-
-
+                Button bntSendInvitation=(Button)findViewById(R.id.btn_changeLocation);
+                bntSendInvitation.setEnabled(true);
             }
             @Override
             public void onMarkerDragStart(Marker marker) {
