@@ -51,7 +51,7 @@ public class ServiceGPS extends Service   implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-       Double latitude = location.getLatitude();
+        Double latitude = location.getLatitude();
         Double longitude = location.getLongitude();
 
         Toast.makeText(getBaseContext(),
@@ -102,6 +102,7 @@ public class ServiceGPS extends Service   implements LocationListener {
                         float accuracy = location.getAccuracy();
                         if (accuracy < bestAccuracy) {
                             bestResult = location;
+                            bestAccuracy = accuracy;
                         }
                     }
                 }

@@ -58,8 +58,8 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
         double latitude=0;
         double longitude=0;
         try {
-             latitude = Double.parseDouble(st.nextToken());
-             longitude = Double.parseDouble(st.nextToken());
+            latitude = Double.parseDouble(st.nextToken());
+            longitude = Double.parseDouble(st.nextToken());
         }
         catch(Exception e){
             latitude=44.807460;
@@ -76,19 +76,19 @@ public class ChooseMapLocation extends AppCompatActivity implements OnMapReadyCa
 /*                onMapReady(mMap.getMap());
                 LatLng newLocation = marker.getPosition();
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 15.0f));*/
-              //  onMapReady(mMap.getMap());
+                //  onMapReady(mMap.getMap());
                 mMap.getMapAsync(current);
                 onMapReady(mMap.getMap());
             }
             @Override
             public void onMarkerDragEnd(Marker marker) {
                 LatLng newLocation = marker.getPosition();
-             //   mLocation.setLatitude(newLocation.latitude);
-              //  mLocation.setLongitude(newLocation.longitude);
+                //   mLocation.setLatitude(newLocation.latitude);
+                //  mLocation.setLongitude(newLocation.longitude);
 
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 13));
                 if(newLocation!=null) {
-                  //  Toast.makeText(getApplicationContext(), newLocation.latitude + "", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(getApplicationContext(), newLocation.latitude + "", Toast.LENGTH_SHORT).show();
                     gcords.replace(0, gcords.length(), "");
                     gcords.append(newLocation.latitude + "," + newLocation.longitude);
                 }

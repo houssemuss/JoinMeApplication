@@ -26,11 +26,11 @@ public class ArrangmentResponse extends AppCompatActivity implements OnMapReadyC
 
 
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-         //   if(etat) {
+            //   if(etat) {
             mMap.getMapAsync(this);
             onMapReady(mMap.getMap());
 
-           // }
+            // }
         }
         catch(Exception e){
             e.printStackTrace();
@@ -67,20 +67,22 @@ public class ArrangmentResponse extends AppCompatActivity implements OnMapReadyC
 
     }
 
-     public void accept(View v){
-       //  Toast.makeText(getApplicationContext(),getIntent().getStringExtra("senderNum"),Toast.LENGTH_LONG).show();
-         PhoneNumberSms.sendSms(getIntent().getStringExtra("senderNum"),"Invitation Response : accepted",getApplicationContext());
-         Intent intent=new Intent(getApplicationContext(),choice_window.class);
-         startActivity(intent);
-         finish();
-     }
+    public void accept(View v){
+        //  Toast.makeText(getApplicationContext(),getIntent().getStringExtra("senderNum"),Toast.LENGTH_LONG).show();
+        PhoneNumberSms.sendSms(getIntent().getStringExtra("senderNum"),"Invitation Response : accepted",getApplicationContext());
+        Intent intent=new Intent(getApplicationContext(),choice_window.class);
+        startActivity(intent);
+        CustomListItem.selectedContacts.clear();
+        finish();
+    }
 
-     public void dismiss(View v){
-         PhoneNumberSms.sendSms(getIntent().getStringExtra("senderNum"),"Invitation Response : dismissed",getApplicationContext());
-         Intent intent=new Intent(getApplicationContext(),choice_window.class);
-         startActivity(intent);
-         finish();
-     }
+    public void dismiss(View v){
+        PhoneNumberSms.sendSms(getIntent().getStringExtra("senderNum"),"Invitation Response : dismissed",getApplicationContext());
+        Intent intent=new Intent(getApplicationContext(),choice_window.class);
+        startActivity(intent);
+        CustomListItem.selectedContacts.clear();
+        finish();
+    }
 
 
 

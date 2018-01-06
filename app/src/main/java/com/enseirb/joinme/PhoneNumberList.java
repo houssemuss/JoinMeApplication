@@ -59,61 +59,59 @@ public class PhoneNumberList extends AppCompatActivity {
     }
 
 
-        public void broadcastInvitation(View v){
-            //Toast.makeText(getApplicationContext(),"ecouter "+CustomListItem.selectedContacts.size(),Toast.LENGTH_LONG).show();
-            selectedContacts=CustomListItem.selectedContacts;
-            String cords=ServiceGPS.getCords();
-            if(selectedContacts.size()>0) {
-                if(!ServiceGPS.getCords().matches(".*Error.*")) {
-                    for (Contact contact : selectedContacts) {
-                        PhoneNumberSms.sendSms(contact.getPhone_number(), "Invitation Request:" +cords, getApplicationContext());
-                    }
+    public void broadcastInvitation(View v){
+        //Toast.makeText(getApplicationContext(),"ecouter "+CustomListItem.selectedContacts.size(),Toast.LENGTH_LONG).show();
+        selectedContacts=CustomListItem.selectedContacts;
+        String cords=ServiceGPS.getCords();
+        if(selectedContacts.size()>0) {
+            if(!ServiceGPS.getCords().matches(".*Error.*")) {
+                for (Contact contact : selectedContacts) {
+                    PhoneNumberSms.sendSms(contact.getPhone_number(), "Invitation Request:" +cords, getApplicationContext());
                 }
-                else{
-                    Toast.makeText(getApplicationContext(),"NO GPS CORDS FOUND",Toast.LENGTH_SHORT).show();
-                }
-
             }
-            else {
-                Toast.makeText(getApplicationContext(),"Contact selection is required",Toast.LENGTH_SHORT).show();
+            else{
+                Toast.makeText(getApplicationContext(),"NO GPS CORDS FOUND",Toast.LENGTH_SHORT).show();
             }
 
         }
-
-        public void changePlaceBroadcast(View v){
-            selectedContacts=CustomListItem.selectedContacts;
-            if(selectedContacts.size()>0) {
-                ArrayList<? extends Parcelable> myselectedContacts = new ArrayList<Contact>(selectedContacts);
-                Intent intent = new Intent(getApplicationContext(), ChooseMapLocation.class);
-                intent.putParcelableArrayListExtra("listContacts", myselectedContacts);
-                startActivity(intent);
-                selectedContacts.clear();
-
-
-            }
-            else {
-                Toast.makeText(getApplicationContext(),"Contact selection is required",Toast.LENGTH_SHORT).show();
-            }
-
+        else {
+            Toast.makeText(getApplicationContext(),"Contact selection is required",Toast.LENGTH_SHORT).show();
         }
 
+    }
 
-        public  List<Contact> getAllContacts(){
-            List<Contact> myContacts=new ArrayList<Contact>();
+    public void changePlaceBroadcast(View v){
+        selectedContacts=CustomListItem.selectedContacts;
+        if(selectedContacts.size()>0) {
+            ArrayList<? extends Parcelable> myselectedContacts = new ArrayList<Contact>(selectedContacts);
+            Intent intent = new Intent(getApplicationContext(), ChooseMapLocation.class);
+            intent.putParcelableArrayListExtra("listContacts", myselectedContacts);
+            startActivity(intent);
+            //  selectedContacts.clear();
 
-            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,null,null, null);
-            while (phones.moveToNext())
-            {
-                String name=phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-                String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-              //  Toast.makeText(getApplicationContext(),name, Toast.LENGTH_LONG).show();
-                Contact contact=new Contact();
-                contact.setName(name);
-                contact.setPhone_number(phoneNumber);
-                myContacts.add(contact);
-            }
-            phones.close();
-            return myContacts;
         }
+        else {
+            Toast.makeText(getApplicationContext(),"Contact selection is required",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    public  List<Contact> getAllContacts(){
+        List<Contact> myContacts=new ArrayList<Contact>();
+
+        Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,null,null, null);
+        while (phones.moveToNext())
+        {
+            String name=phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+            String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            Contact contact=new Contact();
+            contact.setName(name);
+            contact.setPhone_number(phoneNumber);
+            myContacts.add(contact);
+        }
+        phones.close();
+        return myContacts;
+    }
 
 }

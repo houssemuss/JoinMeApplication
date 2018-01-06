@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.READ_CONTACTS,Manifest.permission.INTERNET
             };
-                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+            requestPermissions(permissions, PERMISSION_REQUEST_CODE);
         }
 
         final Intent intent=new Intent(this,choice_window.class);
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-              startService(intentService);
-              startActivity(intent);
+                startService(intentService);
+                startActivity(intent);
                 finish();
             }
         };
