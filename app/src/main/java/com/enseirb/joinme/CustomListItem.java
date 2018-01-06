@@ -23,7 +23,9 @@ public class CustomListItem extends ArrayAdapter<Contact> {
         private int             resource;
         private LayoutInflater inflater;
         private Context context;
+        public static final int max=1000;
         public static List<Contact> selectedContacts=new ArrayList<Contact>();
+        private boolean[]positions=new boolean[max];
 
         public CustomListItem ( Context ctx, int resourceId, List<Contact> objects) {
             super( ctx, resourceId, objects );
@@ -33,7 +35,7 @@ public class CustomListItem extends ArrayAdapter<Contact> {
         }
 
         @Override
-        public View getView (int position, View convertView, ViewGroup parent ) {
+        public View getView (final int position, View convertView, ViewGroup parent ) {
             convertView = (LinearLayout ) inflater.inflate( resource, null );
             final Contact contact = getItem( position );
             TextView contactName = (TextView) convertView.findViewById(R.id.contact_name);
@@ -43,6 +45,9 @@ public class CustomListItem extends ArrayAdapter<Contact> {
             contactPhone.setText(contact.getPhone_number());
 
              final CheckBox checkbox = (CheckBox)convertView.findViewById(R.id.check);
+             if(positions[position]==true){
+                 checkbox.setChecked(true);
+             }
 
 
                    checkbox .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -54,9 +59,11 @@ public class CustomListItem extends ArrayAdapter<Contact> {
                             if(isChecked) {
 
                                 selectedContacts.add(contact);
+                                positions[position]=true;
                             }
                             else{
                                 selectedContacts.remove(contact);
+                                positions[position]=false;
                             }
 
                         //    Toast.makeText(context,selectedContacts.size()+"",Toast.LENGTH_LONG).show();
