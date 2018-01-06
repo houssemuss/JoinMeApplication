@@ -30,15 +30,20 @@
          >
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:onClick="broadcastInvitation"
+                android:background="@drawable/button_background"
                 android:text="Send Invitation" />
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:onClick="changePlaceBroadcast"
+                android:background="@drawable/button_background"
                 android:text="Change Location" />
 
         </LinearLayout>
