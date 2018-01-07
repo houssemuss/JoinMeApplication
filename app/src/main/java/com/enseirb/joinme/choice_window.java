@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class choice_window extends AppCompatActivity {
     private ListView choices;
-    String [] list_choice={"Saisir un numéro","consulter la liste des contacts"};
+    String [] list_choice={"Dial a number","Get contact list"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

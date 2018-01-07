@@ -26,7 +26,7 @@
             android:textColor="#33495C"
             android:textSize="30dp"
             android:gravity="center"
-            android:text="Saisir votre choix" />
+            android:text="Select your choice" />
         <Space
             android:layout_width="1dp"
             android:layout_height="40dp"/>
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Envoyer"
+            android:text="Send"
             android:textStyle="bold"
             android:background="@drawable/button_background"
             android:onClick="redirectChoice"
